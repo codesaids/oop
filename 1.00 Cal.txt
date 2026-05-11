@@ -1,0 +1,141 @@
+import java.util.*;
+
+class Cal
+{
+public static void main(String[] args)
+{
+Scanner sc = new Scanner(System.in);
+
+char ch;
+
+do
+{
+try
+{
+System.out.println("Enter First Number:");
+int n1 = sc.nextInt();
+
+System.out.println("Enter Second Number:");
+int n2 = sc.nextInt();
+
+System.out.println("1.Addition");
+System.out.println("2.Subtraction");
+System.out.println("3.Multiplication");
+System.out.println("4.Division");
+System.out.println("5.Check Prime Numbers");
+
+System.out.println("Enter your choice:");
+int choice = sc.nextInt();
+
+double result = 0;
+
+switch(choice)
+{
+case 1:
+result = n1 + n2;
+System.out.println("Addition = " + result);
+break;
+
+case 2:
+result = n1 - n2;
+System.out.println("Subtraction = " + result);
+break;
+
+case 3:
+result = n1 * n2;
+System.out.println("Multiplication = " + result);
+break;
+
+case 4:
+
+while(n2 == 0)
+{
+System.out.println("Denominator cannot be 0");
+System.out.println("Please enter another second number:");
+n2 = sc.nextInt();
+}
+
+result = (double)n1 / n2;
+
+System.out.println("Division = " + result);
+break;
+
+case 5:
+
+boolean isPrime1 = true;
+
+if(n1 <= 1)
+{
+isPrime1 = false;
+}
+else
+{
+for(int i = 2; i <= n1 / 2; i++)
+{
+if(n1 % i == 0)
+{
+isPrime1 = false;
+break;
+}
+}
+}
+
+boolean isPrime2 = true;
+
+if(n2 <= 1)
+{
+isPrime2 = false;
+}
+else
+{
+for(int i = 2; i <= n2 / 2; i++)
+{
+if(n2 % i == 0)
+{
+isPrime2 = false;
+break;
+}
+}
+}
+
+if(isPrime1)
+{
+System.out.println(n1 + " is a Prime Number");
+}
+else
+{
+System.out.println(n1 + " is Not a Prime Number");
+}
+
+if(isPrime2)
+{
+System.out.println(n2 + " is a Prime Number");
+}
+else
+{
+System.out.println(n2 + " is Not a Prime Number");
+}
+break;
+
+default:
+System.out.println("Invalid Choice");
+}
+}
+
+catch(Exception e)
+{
+System.out.println("Invalid Input");
+sc.nextLine();
+}
+
+System.out.println("Do you want to continue (Y/N):");
+ch = sc.next().charAt(0);
+}
+
+while(ch == 'Y' || ch == 'y');
+
+System.out.println("Calculator Closed");
+
+sc.close();
+}
+}
