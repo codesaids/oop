@@ -1,0 +1,111 @@
+import java.util.Scanner;
+
+class Ecom
+{
+int id;
+String name;
+double price;
+int qty;
+
+Ecom()
+{
+id = 0;
+name = "Unknown";
+price = 0;
+qty = 0;
+}
+
+Ecom(int i, String n, double p)
+{
+id = i;
+name = n;
+price = p;
+qty = 1;
+}
+
+Ecom(int i, String n, double p, int q)
+{
+id = i;
+name = n;
+price = p;
+qty = q;
+}
+
+double total()
+{
+return price * qty;
+}
+
+void display()
+{
+System.out.println("Product ID   : " + id);
+System.out.println("Product Name : " + name);
+System.out.println("Price        : " + price);
+System.out.println("Quantity     : " + qty);
+System.out.println("Total        : " + total());
+System.out.println();
+}
+
+public static void main(String[] args)
+{
+Scanner sc = new Scanner(System.in);
+
+Ecom p1 = new Ecom(101, "Powerbank", 800);
+
+Ecom p2 = new Ecom(102, "Laptop", 55000, 1);
+
+Ecom p3 = new Ecom();
+
+System.out.print("Enter Product ID: ");
+p3.id = sc.nextInt();
+
+sc.nextLine();
+
+System.out.print("Enter Product Name: ");
+p3.name = sc.nextLine();
+
+System.out.print("Enter Product Price: ");
+p3.price = sc.nextDouble();
+
+System.out.print("Enter Product Quantity: ");
+p3.qty = sc.nextInt();
+
+// Display Invoice
+System.out.println("\n ***** INVOICE *****\n");
+
+p1.display();
+p2.display();
+p3.display();
+
+double totalAmount =
+p1.total() + p2.total() + p3.total();
+
+double discount = 0;
+
+if(totalAmount > 15000)
+{
+discount = totalAmount * 0.25;
+}
+else if(totalAmount > 10000)
+{
+discount = totalAmount * 0.20;
+}
+else if(totalAmount > 5000)
+{
+discount = totalAmount * 0.15;
+}
+
+double finalAmount = totalAmount - discount;
+
+System.out.println("Total Amount : " + totalAmount);
+
+System.out.println("Discount     : " + discount);
+
+System.out.println("Final Amount : " + finalAmount);
+
+System.out.println("\nThank You For Shopping!");
+
+sc.close();
+}
+}
+
